@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+Infant:ital,wght@1,1&display=swap');
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 5px;
+    align-items: center;
+    background-color:rgb(1, 21, 14);
+    color: white;
+    font-family: 'Ysabeau Infant', sans-serif;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color:rgb(161, 176, 74);
+    color: black;
+}
+
+.footer-container {
+    background-color: rgb(0, 14, 10);
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    margin-top:auto;
+    margin-top: auto;
+    font-family: 'Ysabeau Infant', sans-serif;
+    color: antiquewhite;
+}
+
+.footer-container-social {
+    margin-bottom: 10px;    
+}
+
+a {
+    text-decoration: none;
+    color: rgb(249, 244, 244);
+}
+
+.title {
+    display: flex;
+    align-items:center;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.main-container-course {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.card {
+    align-items:center;
+}

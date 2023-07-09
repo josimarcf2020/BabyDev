@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+Infant:ital,wght@1,1&display=swap');
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 5px;
+    padding-right: 5px;
+    align-items: center;
+    background-color:rgb(1, 21, 14);
+    color: white;
+    font-family: 'Ysabeau Infant', sans-serif;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color:rgb(161, 176, 74);
+    color: black;
+}
+
+.footer-container {
+    background-color: rgb(0, 14, 10);
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    margin-top: auto;
+    font-family: 'Ysabeau Infant', sans-serif;
+    color: antiquewhite;
+}
+
+.footer-container-social {
+    margin-bottom: 10px;   
+}
+
+.footer-container-social > a {
+    text-decoration: none;
+    color: white;    
+}
+
+.footer-container-social > a:hover {
+    color: rgb(240, 6, 6);   
+}
+
+.banner {
+    background-image: url("../img/banner.webp");
+    background-size: 100%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner > p{
+    font-family: "Ysabeau Infant", sans-serif;
+    font-size: 48px;
+    color: aliceblue;
+    margin-bottom: 10px;
+}
+
+.banner > a > button{
+    color: rgb(246, 10, 10);
+    font-family: "Ysabeau Infant", sans-serif;
+    font-size: 20px;
+}
+
+.article-content{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.search{
+    display: flex;
+    flex-direction: row;
+}
+
+.search > select{
+    margin-right: 10px;
+}
+
+.table {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.table > tbody > tr > td > button {
+    font-family: "Ysabeau Infant", sans-serif;
+
+}
