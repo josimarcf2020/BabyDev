@@ -14,6 +14,7 @@ module.exports = {
             });
         }
 
+        res.header("Access-Control-Allow-Origin", "*");
         res.json(json);
         
     },
@@ -32,6 +33,26 @@ module.exports = {
             });
         }
 
+        res.header("Access-Control-Allow-Origin", "*");
+        res.json(json);
+
+    },
+
+    readCurso: async(req, res) => {
+
+        let json = {error: ``, result: []};
+        let codigo = req.params.codigo;
+        let Cursos = await CursoService.getCurso(codigo);
+
+        for (let i in Cursos) {
+            json.result.push({
+                idCurso:Cursos[i].id,
+                curso: Cursos[i].curso,
+                quantidade: Cursos[i].quantidade
+            });
+        }
+
+        res.header("Access-Control-Allow-Origin", "*");
         res.json(json);
 
     }

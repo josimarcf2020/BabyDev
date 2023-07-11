@@ -25,13 +25,13 @@
         <article class="article-content">
 
             <div class="search">
-                <select class="form-select" id="">
+                <select class="form-select" id="curso_select">
                     <option value="">Selecione uma opção</option>
                 </select>
-                <button class="btn btn-primary">Pesquisar</button>
+                <button class="btn btn-primary" onclick="getCursosBySelection()">Pesquisar</button>
             </div>
 
-            <table class="table">
+            <table class="table" >
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -62,6 +62,8 @@
     </footer>
     
     <script>getAlunos()</script>
+    <script>getCursos()</script>
+    <script>getCursosBySelection()</script>
 
 </body>
 </html>

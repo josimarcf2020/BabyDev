@@ -89,6 +89,8 @@ body {
 .table {
     margin-top: 10px;
     margin-bottom: 10px;
+    overflow-y: auto; 
+    height: 20px;
 }
 
 .table > tbody > tr > td > button {
