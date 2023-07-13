@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const CursoService = require('../services/CursoSevice');
+const CursoService = require('../services/CursoService');
 
 module.exports = {
     readCursos: async (req, res) => {

@@ -1,5 +1,33 @@
 const url = "http://localhost:3000/api";
 
+function createAluno() {
+
+    let nome        = document.getElementById("nome").value;   
+    let sobrenome   = document.getElementById("sobrenome").value;
+    let telefone    = document.getElementById("telefone").value;
+    let email       = document.getElementById("email").value;
+    let select      = document.getElementById("curso-select");
+
+    let opcao       = select.options[select.selectedIndex].value;
+
+    const data = {
+        "nome"      : nome,
+        "sobrenome" : sobrenome,
+        "telefone"  : telefone,
+        "email"     : email,
+        "idCurso"   : opcao
+    }
+
+    axios.post(`${url}/alunos`, data)
+        .then(
+            response => { 
+                console.log(request.data.result)
+            }
+        )
+        .catch(error => console.log(error))
+
+}
+
 function getAlunos() {
     axios.get(`${url}/alunos`)
         .then(
@@ -57,13 +85,13 @@ function getCursos() {
 
                 const cursos = response.data.result;
 
-                let html = '<option value="">Selecione uma opção</option>';
+                let html = `<option disabled selected>Selecione uma opção</option>`;
 
                 for(let i = 0; i < cursos.length; i++){
                     html += `<option value="${cursos[i].idCurso}">${cursos[i].curso}</option>`;
                 }
 
-                document.getElementById('curso_select').innerHTML = html;
+                document.getElementById('curso-select').innerHTML = html;
 
             }
             

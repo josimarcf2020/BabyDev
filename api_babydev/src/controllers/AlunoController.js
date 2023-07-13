@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const AlunoService = require('../services/AlunoSevice');
+const AlunoService = require('../services/AlunoService');
 
 module.exports = {
     readAlunos: async (req, res) => {
@@ -18,7 +18,6 @@ module.exports = {
         }
 
         res.header("Access-Control-Allow-Origin", "*")
-
         res.json(json);
         
     }, 
@@ -71,13 +70,13 @@ module.exports = {
     createAluno: async(req, res) => {
         let json = {error: "", result: {} };
 
-        let nome = req.body.nome;
-        let sobrenome = req.body.sobrenome;
-        let email = req.body.email;
-        let idcurso = req.body.idcurso
-        let telefone = req.body.telefone;
+        let nome        = req.body.nome;
+        let sobrenome   = req.body.sobrenome;
+        let email       = req.body.email;
+        let idCurso     = req.body.idCurso;
+        let telefone    = req.body.telefone;
 
-        let vagas = await AlunoService.returnVagas(idcurso);
+        let vagas = await AlunoService.returnVagas(idCurso);
 
         json.result = {
             vagas
@@ -89,13 +88,13 @@ module.exports = {
             json.error = 'Vaga indisponível';
         } else {
 
-            if(nome && sobrenome && telefone && email && idcurso){
+            if(nome && sobrenome && telefone && email && idCurso){
                 let aluno = await AlunoService.createAluno(
                     nome,
                     sobrenome,
                     telefone,
                     email,
-                    idcurso
+                    idCurso
                 );
     
                 json.result = {
@@ -104,17 +103,18 @@ module.exports = {
                     sobrenome,
                     telefone,
                     email,
-                    idcurso
+                    idCurso
                 }
             }
             else {
                 json.error = 'Incomplete fields'
             }
 
-            await AlunoService.decrementaVaga(idcurso);
+            await AlunoService.decrementaVaga(idCurso);
 
         }
 
+        res.header("Access-Control-Allow-Origin", "*")
         res.json(json);
         
     },
@@ -138,6 +138,7 @@ module.exports = {
             json.error = 'Incomplete Fields'
         }
 
+        res.header("Access-Control-Allow-Origin", "*")
         res.json(json);
 
     },
@@ -163,6 +164,7 @@ module.exports = {
 
         }
         
+        res.header("Access-Control-Allow-Origin", "*")
         res.json(json);
 
     }

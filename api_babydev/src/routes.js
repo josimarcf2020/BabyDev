@@ -1,9 +1,12 @@
 const express = require('express');
+const app = express();
 const Router = express.Router();
 const AlunoController = require('./controllers/AlunoController');
 const CursoController = require('./controllers/CursoController');
 const { urlencoded } = require('body-parser');
 const cors = require('cors');
+
+app.use(express.json());
 
 Router.options('*', cors());
 

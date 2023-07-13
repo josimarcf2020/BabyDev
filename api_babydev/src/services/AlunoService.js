@@ -1,5 +1,4 @@
 const database = require('../database');
-const CursoSevice = require('./CursoSevice');
 
 module.exports = {
     searchAlunos:() => {
@@ -42,11 +41,11 @@ module.exports = {
         });
     },
 
-    createAluno: (nome, sobrenome, telefone, email, idcurso) => {
+    createAluno: (nome, sobrenome, telefone, email, idCurso) => {
         return new Promise((accepted, rejected) => {
             database.query(
                 `INSERT INTO alunos (nome, sobrenome, telefone, email, idcurso) 
-                VALUES ('${nome}', '${sobrenome}', '${telefone}', '${email}', ${idcurso})`, (error, results) => {
+                VALUES ('${nome}', '${sobrenome}', '${telefone}', '${email}', ${idCurso})`, (error, results) => {
                 if(error){ 
                     rejected(error); 
                     return;
@@ -56,14 +55,19 @@ module.exports = {
         }); 
     },
 
-    updateAluno:  (codigo, nome, sobrenome, telefone, email, idcurso) => {
+    updateAluno:  (codigo, nome, sobrenome, telefone, email, idCurso) => {
         return new Promise((accepted, rejected) => {
             database.query(
-                `UPDATE alunos SET nome = '${nome}', sobrenome = '${sobrenome}', telefone = '${telefone}', email = '${email}', idcurso = ${idcurso} 
-                WHERE id = ${codigo}`, (error, results) => {
+                `UPDATE alunos 
+                    SET nome        = '${nome}', 
+                        sobrenome   = '${sobrenome}', 
+                        telefone    = '${telefone}', 
+                        email       = '${email}', 
+                        idcurso     = ${idCurso} 
+                    WHERE id = ${codigo}`, (error, results) => {
                     if(error){rejected(error); return;}
                     accepted(results);
-                }
+                    }
             );
         });
     },
@@ -79,9 +83,9 @@ module.exports = {
         });
     },
 
-    decrementaVaga:(idcurso) => {
+    decrementaVaga:(idCurso) => {
         return new Promise((accepted, rejected) => {
-            database.query(`UPDATE cursos SET quantidade=quantidade-1 WHERE id=${idcurso}`, (error, results) => {
+            database.query(`UPDATE cursos SET quantidade=quantidade-1 WHERE id=${idCurso}`, (error, results) => {
                     if(error){ 
                         rejected(error); 
                         return;
@@ -92,9 +96,9 @@ module.exports = {
         });
     },
 
-    incrementaVaga:(idcurso) => {
+    incrementaVaga:(idCurso) => {
         return new Promise((accepted, rejected) => {
-            database.query(`UPDATE cursos SET quantidade=quantidade+1 WHERE id=${idcurso}`, (error, results) => {
+            database.query(`UPDATE cursos SET quantidade=quantidade+1 WHERE id=${idCurso}`, (error, results) => {
                     if(error){ 
                         rejected(error); 
                         return;
@@ -105,16 +109,16 @@ module.exports = {
         });
     },
 
-    returnVagas: (curso) => {
+    returnVagas:(idCurso) => {
         return new Promise((accepted, rejected) => {
-            database.query(`SELECT quantidade FROM cursos WHERE id = ${curso}`,
+            database.query(`SELECT id, quantidade FROM cursos WHERE id = ${idCurso}`,
             (error, results) => {
                 if(error){
                     rejected(error);
                     return;
                 }
                 accepted(results);
-            });
+            }); 
         });
     }
 }
