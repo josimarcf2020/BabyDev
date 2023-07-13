@@ -44,8 +44,21 @@ module.exports = {
     createAluno: (nome, sobrenome, telefone, email, idCurso) => {
         return new Promise((accepted, rejected) => {
             database.query(
-                `INSERT INTO alunos (nome, sobrenome, telefone, email, idcurso) 
-                VALUES ('${nome}', '${sobrenome}', '${telefone}', '${email}', ${idCurso})`, (error, results) => {
+                `INSERT INTO alunos (
+                    nome, 
+                    sobrenome, 
+                    telefone, 
+                    email, 
+                    idcurso
+                ) 
+                VALUES (
+                    '${nome}', 
+                    '${sobrenome}', 
+                    '${telefone}', 
+                    '${email}', 
+                    ${idCurso}
+                )`, 
+                (error, results) => {
                 if(error){ 
                     rejected(error); 
                     return;
@@ -59,15 +72,18 @@ module.exports = {
         return new Promise((accepted, rejected) => {
             database.query(
                 `UPDATE alunos 
-                    SET nome        = '${nome}', 
-                        sobrenome   = '${sobrenome}', 
-                        telefone    = '${telefone}', 
-                        email       = '${email}', 
-                        idcurso     = ${idCurso} 
-                    WHERE id = ${codigo}`, (error, results) => {
-                    if(error){rejected(error); return;}
-                    accepted(results);
+                SET nome        = '${nome}', 
+                    sobrenome   = '${sobrenome}', 
+                    telefone    = '${telefone}', 
+                    email       = '${email}', 
+                    idcurso     = ${idCurso} 
+                WHERE id = ${codigo}`, (error, results) => {
+                    if(error){
+                        rejected(error); 
+                        return;
                     }
+                    accepted(results);
+                }
             );
         });
     },
@@ -109,7 +125,7 @@ module.exports = {
         });
     },
 
-    returnVagas:(idCurso) => {
+    returnVagas:(idCurso) => { 
         return new Promise((accepted, rejected) => {
             database.query(`SELECT id, quantidade FROM cursos WHERE id = ${idCurso}`,
             (error, results) => {

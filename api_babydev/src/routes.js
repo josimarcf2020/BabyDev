@@ -10,7 +10,7 @@ app.use(express.json());
 
 Router.options('*', cors());
 
-Router.post('/alunos', AlunoController.createAluno);
+Router.post('/aluno', AlunoController.createAluno);
 Router.get('/aluno/:codigo', AlunoController.readAluno);
 Router.get('/alunos', AlunoController.readAlunos);
 Router.get('/alunos/:codigo', AlunoController.readAlunosByCurso);

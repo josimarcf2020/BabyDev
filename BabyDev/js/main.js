@@ -6,8 +6,8 @@ function createAluno() {
     let sobrenome   = document.getElementById("sobrenome").value;
     let telefone    = document.getElementById("telefone").value;
     let email       = document.getElementById("email").value;
-    let select      = document.getElementById("curso-select");
 
+    let select      = document.getElementById("curso-select");
     let opcao       = select.options[select.selectedIndex].value;
 
     const data = {
@@ -18,8 +18,8 @@ function createAluno() {
         "idCurso"   : opcao
     }
 
-    axios.post(`${url}/alunos`, data)
-        .then(
+    axios.post(`${url}/aluno`, data)
+        .then( 
             response => { 
                 console.log(request.data.result)
             }

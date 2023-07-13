@@ -14,7 +14,7 @@ module.exports = {
             });
         }
 
-        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Origin","*");
         res.json(json);
         
     },
@@ -33,7 +33,7 @@ module.exports = {
             });
         }
 
-        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Origin","*");
         res.json(json);
 
     },
@@ -52,7 +52,7 @@ module.exports = {
             });
         }
 
-        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Origin","*");
         res.json(json);
 
     }
