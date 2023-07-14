@@ -19,14 +19,14 @@
 
         <div class="banner">
             <p><b>Alunos Matriculados</b></p>
-            <a href="home.html"><button class="btn btn-light">Página Inicial</button></a>
+            <a href="home.html"><button class="btn btn-light select">Página Inicial</button></a>
         </div>
 
         <article class="article-content">
 
             <div class="search">
-                <select class="form-select" id="curso_select">
-                    <option value="">Selecione uma opção</option>
+                <select name="select" class="form-select" id="curso-select">
+                    
                 </select>
                 <button class="btn btn-primary" onclick="getCursosBySelection()">Pesquisar</button>
             </div>
@@ -63,7 +63,7 @@
     
     <script>getAlunos()</script>
     <script>getCursos()</script>
-    <script>getCursosBySelection()</script>
+
 
 </body>
 </html>

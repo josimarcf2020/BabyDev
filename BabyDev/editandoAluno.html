@@ -17,10 +17,22 @@
 
     <main class="main-container">
         
-        <form action="" method="post" class="form-control">
+        <form action="" method="put" class="form-control">
 
             <div class="matricula">
-                <h3>Matrícula de Alunos</h3>
+                <h3>Atualizar Cadastro</h3>
+            </div>
+
+            <div>
+                <label for="id">ID</label>
+                <input 
+                    id = "id"
+                    type="text"
+                    name="id"
+                    required
+                    class="form-control"
+                    readonly
+                />
             </div>
             
             <div>
@@ -73,7 +85,7 @@
             </select>
 
             <div class="d-grid gap-2">
-                <button class="btn btn-primary" onclick="createAluno()" id="btn_enviar">Matricular</button>                          
+                <button class="btn btn-primary" onclick="" id="btn_enviar">Atualizar</button>                          
             </div>
                     
         </form>
@@ -91,7 +103,7 @@
         </div>
     </footer>
 
-    <script>getCursos()</script>
+    <script>loadFields()</script>
 
 </body>
 </html>

@@ -33,19 +33,19 @@ function getAlunos() {
         .then(
             response => {
 
-                const dados = response.data.result;
+                const data = response.data.result;
                 
                 let html = ''
             
-                for(let i = 0; i < dados.length; i++){
+                for(let i = 0; i < data.length; i++){
                     html += `<tr>
-                                <th scope="row">${dados[i].idAluno}</th>
-                                <td>${dados[i].nome}</td>
-                                <td>${dados[i].sobrenome}</td>
-                                <td>${dados[i].telefone}</td>
-                                <td>${dados[i].email}</td>
-                                <td><button class="btn btn-success" onclick="updateAluno(${dados[i].idAluno})">Editar</button></td>
-                                <td><button class="btn btn-danger" onclick="deleteAluno(${dados[i].idAluno})">Deletar</button></td>
+                                <th scope="row">${data[i].idAluno}</th>
+                                <td>${data[i].nome}</td>
+                                <td>${data[i].sobrenome}</td>
+                                <td>${data[i].telefone}</td>
+                                <td>${data[i].email}</td>
+                                <td><button class="btn btn-secondary" onclick="redirect('${data[i].idAluno}', '${data[i].nome}', '${data[i].sobrenome}', '${data[i].telefone}', '${data[i].email}')">Editar</button></td>
+                                <td><button class="btn btn-danger" onclick="deleteAluno(${data[i].idAluno})">Deletar</button></td>                            
                             </tr>`;
                 }
 
@@ -70,7 +70,7 @@ function deleteAluno(codigo) {
 }
 
 function updateAluno(aluno) {
-    axios.update(`${url}/aluno/${aluno}`)
+    axios.put(`${url}/aluno/${aluno}`)
     .then(
         alert("Atualizado com sucesso!!"),
         updateAluno()
@@ -100,28 +100,28 @@ function getCursos() {
 
 }
 
-function getCursosBySelection() {
+async function getCursosBySelection() {
 
-    let select = document.getElementById("curso_select");
+    let select = document.getElementById('curso-select')
     let option = select.options[select.selectedIndex].value;
 
     axios.get(`${url}/alunos/${option}`)
         .then(
             response => {
                 
-                const dados = response.data.result;
+                const data = response.data.result;
                 
                 let html = '';
             
-                for(let i = 0; i < dados.length; i++){
+                for(let i = 0; i < data.length; i++){
                     html += `<tr>
-                                <th scope="row">${dados[i].idAluno}</th>
-                                <td>${dados[i].nome}</td>
-                                <td>${dados[i].sobrenome}</td>
-                                <td>${dados[i].telefone}</td>
-                                <td>${dados[i].email}</td>
-                                <td><button class="btn btn-success" onclick="updateAluno(${dados[i].idAluno})">Editar</button></td>
-                                <td><button class="btn btn-danger" onclick="deleteAluno(${dados[i].idAluno})">Deletar</button></td>
+                                <th scope="row">${data[i].idAluno}</th>
+                                <td>${data[i].nome}</td>
+                                <td>${data[i].sobrenome}</td>
+                                <td>${data[i].telefone}</td>
+                                <td>${data[i].email}</td>
+                                <td><button class="btn btn-secondary" onclick="redirect('${data[i].idAluno}', '${data[i].nome}', '${data[i].sobrenome}', '${data[i].telefone}', '${data[i].email}')">Editar</button></td>
+                                <td><button class="btn btn-danger" onclick="deleteAluno(${data[i].idAluno})">Deletar</button></td>
                             </tr>`;
                 }
 
@@ -129,4 +129,20 @@ function getCursosBySelection() {
             }
         )
         .catch(error => console.log(error));
+}
+
+function redirect(id, nome, sobrenome, telefone, email) {
+    window.location.href = `http://127.0.0.1:5500/BabyDev/editandoAluno.html?id=${id}&nome='${nome}&sobrenome='${sobrenome}&telefone='${telefone}&email='${email}`
+}
+
+function loadFields() {
+
+    const urlParams = new URLSearchParams(window.location.search);
+
+    document.getElementById("id").value         = urlParams.get('id');
+    document.getElementById("nome").value       = urlParams.get('nome');
+    document.getElementById("sobrenome").value  = urlParams.get('sobrenome');
+    document.getElementById("telefone").value   = urlParams.get('telefone');
+    document.getElementById("email").value      = urlParams.get('email');
+
 }

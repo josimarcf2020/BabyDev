@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ysabeau+Infant:ital,wght@1,1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 .header-container {
     display: flex;
@@ -9,7 +9,7 @@
     align-items: center;
     background-color:rgb(1, 21, 14);
     color: white;
-    font-family: 'Ysabeau Infant', sans-serif;
+    font-family: 'Lobster', cursive;
 }
 
 .body-container {
@@ -28,7 +28,7 @@
     flex-direction: column;
     align-items:center;
     margin-top: auto;
-    font-family: 'Ysabeau Infant', sans-serif;
+    font-family: 'Lobster', cursive;
     color: antiquewhite;
 }
 
