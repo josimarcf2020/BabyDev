@@ -122,17 +122,16 @@ module.exports = {
     updateAluno: async(req, res) => {
         let json = {error: '', result: {}};
 
-        let codigo = req.params.codigo;
-        let nome = req.body.nome;
-        let sobrenome = req.body.sobrenome;
-        let telefone = req.body.telefone;
-        let email = req.body.email;
-        let idcurso = req.body.idcurso;
+        let codigo      = req.params.codigo;
+        let nome        = req.body.nome;
+        let sobrenome   = req.body.sobrenome;
+        let telefone    = req.body.telefone;
+        let email       = req.body.email;
 
-        if (codigo && nome && sobrenome && telefone && email && idcurso) {
-            await AlunoService.updateAluno(codigo, nome, sobrenome, telefone, email, idcurso);
+        if (codigo && nome && sobrenome && telefone && email) {
+            await AlunoService.updateAluno(codigo, nome, sobrenome, telefone, email);
 
-            json.result = {codigo, nome, sobrenome, telefone, email, idcurso};
+            json.result = {codigo, nome, sobrenome, telefone, email};
 
         }else{
             json.error = 'Incomplete Fields'

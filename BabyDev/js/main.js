@@ -69,15 +69,6 @@ function deleteAluno(codigo) {
     .catch(error => console.log(error))
 }
 
-function updateAluno(aluno) {
-    axios.put(`${url}/aluno/${aluno}`)
-    .then(
-        alert("Atualizado com sucesso!!"),
-        updateAluno()
-    )
-    .catch(error => console.log(error))
-}
-
 function getCursos() {
     axios.get(`${url}/cursos`)
         .then(
@@ -132,7 +123,7 @@ async function getCursosBySelection() {
 }
 
 function redirect(id, nome, sobrenome, telefone, email) {
-    window.location.href = `http://127.0.0.1:5500/BabyDev/editandoAluno.html?id=${id}&nome='${nome}&sobrenome='${sobrenome}&telefone='${telefone}&email='${email}`
+    window.location.href = `http://127.0.0.1:5500/BabyDev/editandoAluno.html?id=${id}&nome=${nome}&sobrenome=${sobrenome}&telefone=${telefone}&email=${email}`
 }
 
 function loadFields() {
@@ -146,3 +137,29 @@ function loadFields() {
     document.getElementById("email").value      = urlParams.get('email');
 
 }
+
+function updateAluno() {
+
+    let codigo      = document.getElementById("id").value;
+    let nome        = document.getElementById("nome").value;
+    let sobrenome   = document.getElementById("sobrenome").value;
+    let telefone    = document.getElementById("telefone").value;
+    let email       = document.getElementById("email").value;
+
+    const data = {
+        "nome"      : nome,
+        "sobrenome" : sobrenome,
+        "telefone"  : telefone,
+        "email"     : email
+    }
+
+    console.log(`${url}/aluno/${codigo}`);
+
+    axios.put(`${url}/aluno/${codigo}`, data)
+    .then((response) => {
+        console.log(response.message)
+    })
+    .catch((error) => console.log(error))
+
+}
+

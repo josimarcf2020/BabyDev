@@ -68,16 +68,10 @@ module.exports = {
         }); 
     },
 
-    updateAluno:  (codigo, nome, sobrenome, telefone, email, idCurso) => {
+    updateAluno:  (codigo, nome, sobrenome, telefone, email) => {
         return new Promise((accepted, rejected) => {
             database.query(
-                `UPDATE alunos 
-                SET nome        = '${nome}', 
-                    sobrenome   = '${sobrenome}', 
-                    telefone    = '${telefone}', 
-                    email       = '${email}', 
-                    idcurso     = ${idCurso} 
-                WHERE id = ${codigo}`, (error, results) => {
+                `UPDATE alunos SET nome = '${nome}', sobrenome = '${sobrenome}', telefone = '${telefone}', email = '${email}' WHERE id = ${codigo}`, (error, results) => {
                     if(error){
                         rejected(error); 
                         return;
